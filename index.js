@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
 const Account = require('./models/account');
 const Category = require('./models/category');
 const Product = require('./models/product');
@@ -16,7 +15,7 @@ mongoose.connect(url)
 
 app.use(bodyParser.json());
 
-const JWT_SECRET = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmY0ZDEwMjMwZDI2ZWE5ODg1ZTYwMzAiLCJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzI3MzIwMzcyfQ.Qzeerd7BNioieVV81KYNieTGCzQJ_AC4cUFE0ad8oT4';
+const JWT_SECRET = ' ';
 
 Account.findOne({ username: 'admin' })
     .then(user => {
@@ -49,7 +48,7 @@ app.post('/register', (req, res) => {
     const { username, password } = req.body;
 
     Account.create({ username, password })
-        .then(user => res.status(201).json({ message: 'Account created successfully' }))
+        .then(() => res.status(201).json({ message: 'Account created successfully' }))
         .catch(err => res.status(500).json({ error: err.message }));
 });
 
