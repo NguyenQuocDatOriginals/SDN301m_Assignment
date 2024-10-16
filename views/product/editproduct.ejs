@@ -1,0 +1,60 @@
+<% include ../partials/header %>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Edit Product</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    </head>
+
+    <body>
+        <div class="ui main text container segment">
+            <div class="ui huge header">Cập nhật sản phẩm</div>
+            <form action="/product/<%= product._id %>/edit" method="POST" class="ui form">
+                <div class="field">
+                    <label>Tên sản phẩm:</label>
+                    <input type="text" name="productName" value="<%= product.productName %>" required
+                        placeholder="Tên sản phẩm" />
+                </div>
+                <div class="field">
+                    <label>Mô tả sản phẩm:</label>
+                    <textarea name="productDescription" required><%= product.productDescription %></textarea>
+                </div>
+                <div class="field">
+                    <label>Giá:</label>
+                    <input type="number" name="price" value="<%= product.price %>" required min="0"
+                        placeholder="Giá" />
+                </div>
+                <div class="field">
+                    <label>Danh mục:</label>
+                    <select name="category" required>
+                        <% categories.forEach(category=> { %>
+                            <option value="<%= category._id %>" <%=category._id.equals(product.category) ? 'selected'
+                                : '' %>><%= category.categoryName %>
+                            </option>
+                            <% }) %>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Is Featured:</label>
+                    <div class="ui checkbox">
+                        <input type="checkbox" name="isFeature" <% if (product.isFeature) { %>checked<% } %> />
+                            <label>Featured Product</label>
+                    </div>
+                </div>
+                <input type="submit" class="ui violet basic button" value="Cập nhật sản phẩm" />
+            </form>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.ui.checkbox').checkbox();
+            });
+        </script>
+    </body>
+
+    </html>

@@ -1,0 +1,25 @@
+[{
+  "_id": {
+    "$oid": "648f2f15b90ce987ebbedd7a"
+  },
+  "categoryName": "Smart Phone", 
+  "categoryDescription": "Unleash the power and potential in your pocket with our feature-packed smartphones."
+},{
+  "_id": {
+    "$oid": "6666c124bb47bc0cdc247978"
+  },
+  "categoryName": "Laptop", 
+  "categoryDescription": "Discover our range of powerful laptops, designed for portability, performance, and all your computing needs."
+},{
+  "_id": {
+    "$oid": "6666bf1106fbaf0ba0fdb7d5"
+  },
+  "categoryName": "Tablet", 
+  "categoryDescription": "Experience immersive entertainment, effortless productivity, and versatile functionality with our innovative tablets."
+},{
+  "_id": {
+    "$oid": "6666be7d7fc0240a8813d46b"
+  },
+  "categoryName": "Accessory", 
+  "categoryDescription": "Enhance your tech experience and personalize your devices with our collection of high-quality accessories."
+}]

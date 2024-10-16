@@ -1,0 +1,42 @@
+<% include ../partials/header %>
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Product</title>
+  </head>
+
+  <body>
+    <div class="ui main text container segment">
+      <div class="ui huge header">Tạo sản phẩm</div>
+      <form action="/product/create" method="POST" class="ui form">
+        <div class="field">
+          <label>Tên sản phẩm:</label>
+          <input type="text" name="productName" required placeholder="Tên sản phẩm" />
+        </div>
+        <div class="field">
+          <label>Mô tả sản phẩm:</label>
+          <textarea name="productDescription" required></textarea>
+        </div>
+        <div class="field">
+          <label>Giá:</label>
+          <input type="number" name="price" required min="0" placeholder="Giá" />
+        </div>
+        <div class="field">
+          <label>Danh mục:</label>
+          <select name="category" required>
+            <% categories.forEach(category=> { %>
+              <option value="<%= category._id %>">
+                <%= category.categoryName %>
+              </option>
+              <% }) %>
+          </select>
+        </div>
+        <input type="submit" class="ui violet basic button" value="Tạo sản phẩm" />
+      </form>
+    </div>
+  </body>
+
+  </html>

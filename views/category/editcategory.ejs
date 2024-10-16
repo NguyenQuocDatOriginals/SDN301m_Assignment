@@ -1,0 +1,31 @@
+<% include ../partials/header %>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Edit Category</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    </head>
+
+    <body>
+        <div class="ui main text container segment">
+            <div class="ui huge header">Cập nhật danh mục</div>
+            <form action="/category/<%= category._id %>" method="POST" class="ui form">
+                <input type="hidden" name="_method" value="PUT">
+                <div class="field">
+                    <label>Tên danh mục:</label>
+                    <input type="text" name="categoryName" value="<%= category.categoryName %>" required
+                        placeholder="Tên danh mục" />
+                </div>
+                <div class="field">
+                    <label>Mô tả danh mục:</label>
+                    <textarea name="categoryDescription" required><%= category.categoryDescription %></textarea>
+                </div>
+                <input type="submit" class="ui violet basic button" value="Cập nhật danh mục" />
+            </form>
+        </div>
+    </body>
+
+    </html>

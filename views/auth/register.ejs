@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Nguyễn Quốc Đạt</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+  <style>
+    body {
+      padding-top: 80px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h1><span class="fa fa-sign-in"></span> Đăng ký tài khoản</h1>
+
+      <!-- REGISTER FORM -->
+      <form action="/register" method="post">
+        <div class="form-group">
+          <label>Tên tài khoản</label>
+          <input type="text" class="form-control" name="username" />
+        </div>
+        <div class="form-group">
+          <label>Mật khẩu</label>
+          <input type="password" class="form-control" name="password" />
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-lg">Đăng ký</button>
+      </form>
+
+      <!-- Display error message if exists -->
+      <% if (typeof message !=='undefined' ) { %>
+        <hr />
+        <div class="alert alert-danger">
+          <strong>
+            <%= message %>
+          </strong>
+        </div>
+        <% } %>
+          <hr />
+
+          <p>Bạn đã có tài khoản? <a href="/">Đăng nhập ngay!</a></p>
+    </div>
+  </div>
+</body>
+
+</html>
