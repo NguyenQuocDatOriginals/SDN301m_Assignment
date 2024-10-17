@@ -112,7 +112,9 @@ router.post("/:id", async function (req, res) {
 // DELETE CATEGORY
 router.get("/:id/delete", async function (req, res) {
   try {
+    // Tìm category và xóa nó
     const category = await CategorySchema.findByIdAndDelete(req.params.id);
+    
     if (!category) {
       return res.status(404).json({
         status: 404,
@@ -120,7 +122,10 @@ router.get("/:id/delete", async function (req, res) {
       });
     }
 
-    // Chuyển hướng đến trang danh sách category
+    // Xóa tất cả các sản phẩm liên quan đến category vừa bị xóa
+    await Product.deleteMany({ category: req.params.id });
+
+    // Chuyển hướng đến trang danh sách category sau khi xóa
     res.redirect("/category/dashboard");
   } catch (error) {
     res.status(500).json({
@@ -130,6 +135,5 @@ router.get("/:id/delete", async function (req, res) {
     });
   }
 });
-
 
 module.exports = router;

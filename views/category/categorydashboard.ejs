@@ -1,67 +1,65 @@
 <% include ../partials/header %>
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Category Dashboard</title>
-        <style>
-            table {
-                width: 100%;
-                border-collapse: collapse;
-            }
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Category Dashboard</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-            th,
-            td {
-                border: 1px solid #ddd;
-                padding: 8px;
-                text-align: left;
-            }
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
 
-            th {
-                background-color: #f2f2f2;
-            }
-        </style>
-    </head>
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
 
-    <body>
-        <div class="ui main text container segment">
-            <div class="ui huge header">Danh sách danh mục</div>
-            <a href="/category/create" class="ui basic red button">Tạo danh mục mới</a>
-            <% if (categories && categories.length> 0) { %>
-                <table>
-                    <thead>
+<body>
+    <div class="ui main text container segment">
+        <div class="ui huge header">Danh sách danh mục</div>
+        <a href="/category/create" class="ui basic red button">Tạo danh mục mới</a>
+
+        <% if (categories && categories.length > 0) { %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tên</th>
+                        <th>Mô tả</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% categories.forEach(category => { %>
                         <tr>
-                            <th>Tên</th>
-                            <th>Mô tả</th>
-                            <th>Thao tác</th>
+                            <td><%= category.categoryName %></td>
+                            <td><%= category.categoryDescription %></td>
+                            <td>
+                                <a href="/category/<%= category._id %>/edit" class="ui basic button">Sửa</a>
+                                <form action="/category/<%= category._id %>/delete" method="GET"
+                                      style="display:inline;" 
+                                      onsubmit="return confirm('Bạn có chắc chắn muốn xóa danh mục này và tất cả sản phẩm bên trong nó?');">
+                                    <button type="submit" class="ui basic button">Xóa</button>
+                                </form>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <% categories.forEach(category=> { %>
-                            <tr>
-                                <td>
-                                    <%= category.categoryName %>
-                                </td>
-                                <td>
-                                    <%= category.categoryDescription %>
-                                </td>
-                                <td>
-                                    <a href="/category/<%= category._id %>/edit" class="ui basic button">Sửa</a>
-                                    <form action="/category/<%= category._id %>/delete" method="GET"
-                                        style="display:inline;">
-                                        <button type="submit" class="ui basic button">Xóa</button>
-                                    </form>
-                                </td>
-                            </tr>
-                            <% }) %>
-                    </tbody>
-                </table>
-                <% } else { %>
-                    <p>Không tìm thấy danh mục nào</p>
-                    <% } %>
-        </div>
-    </body>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p>Không tìm thấy danh mục nào</p>
+        <% } %>
+    </div>
+</body>
 
-    </html>
+</html>
